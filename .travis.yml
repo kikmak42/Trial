@@ -5,6 +5,7 @@ mono: latest
 dotnet: 2.0.0 
 
 install:
+    - cd AuthorizeNET
     - dotnet restore
 
 before_script:
