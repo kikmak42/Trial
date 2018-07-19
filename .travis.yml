@@ -7,6 +7,9 @@ dotnet: 2.0.0
 install:
     - cd AuthorizeNET
     - dotnet restore
+    - cd ../SampleCode
+    - dotnet restore
+    - cd ..
 
 before_script:
     - nuget restore ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
