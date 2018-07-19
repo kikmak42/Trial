@@ -4,21 +4,17 @@ dist: trusty
 mono: latest 
 dotnet: 2.0.0 
 
-install:
-    - cd AuthorizeNET
-    - dotnet restore
-    - cd ../SampleCode
-    - dotnet restore
-    - cd ..
 
 before_script:
-    - nuget restore ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
-    - nuget restore ./SampleCode/SampleCode/SampleCode.csproj
-    - nuget restore ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
+    - dotnet restore ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
+    - dotnet restore ./SampleCode/SampleCode/SampleCode.csproj
+    - dotnet restore ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
     - git submodule update --remote --recursive
   
 script:
-    - dotnet build 
+    - dotnet build ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
+    - dotnet build ./SampleCode/SampleCode/SampleCode.csproj
+    - dotnet build ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
     - dotnet test ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
 
     # - msbuild ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
